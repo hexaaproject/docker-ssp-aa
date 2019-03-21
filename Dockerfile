@@ -20,9 +20,9 @@ RUN cd /opt \
     && mv simplesamlphp-1.17.1 simplesamlphp \
     && ls -alF \
     && cd simplesamlphp/modules \
-    && curl -L -o aa.tar.gz https://github.com/NIIF/simplesamlphp-module-aa/archive/v1.0.4.tar.gz \
+    && curl -L -o aa.tar.gz https://github.com/NIIF/simplesamlphp-module-aa/archive/master.tar.gz \
     && tar xzf aa.tar.gz \
-    && mv simplesamlphp-module-aa-1.0.4 aa \
+    && mv simplesamlphp-module-aa-master aa \
     && curl -L -o hexaa.tar.gz https://github.com/NIIF/simplesamlphp-module-hexaa/archive/master.tar.gz \
     && tar xzf hexaa.tar.gz \
     && mv simplesamlphp-module-hexaa-master hexaa \
