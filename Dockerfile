@@ -1,4 +1,4 @@
-FROM php:7.2.4-fpm-stretch
+FROM php:7.3-fpm-stretch
 LABEL MAINTAINER Balázs SOLTÉSZ <solazs@sztaki.hu>
 
 # Install some dependencies
@@ -15,14 +15,14 @@ RUN apt-get update \
 
 # Download and extract simplesamlphp with aa and hexaa modules
 RUN cd /opt \
-    && curl -L -o simplesamlphp.tar.gz https://github.com/simplesamlphp/simplesamlphp/releases/download/v1.15.4/simplesamlphp-1.15.4.tar.gz \
+    && curl -L -o simplesamlphp.tar.gz https://github.com/simplesamlphp/simplesamlphp/releases/download/v1.17.1/simplesamlphp-1.17.1.tar.gz \
     && tar xzf simplesamlphp.tar.gz \
-    && mv simplesamlphp-1.15.4 simplesamlphp \
+    && mv simplesamlphp-1.17.1 simplesamlphp \
     && ls -alF \
     && cd simplesamlphp/modules \
-    && curl -L -o aa.tar.gz https://github.com/NIIF/simplesamlphp-module-aa/archive/v1.0.3.tar.gz \
+    && curl -L -o aa.tar.gz https://github.com/NIIF/simplesamlphp-module-aa/archive/v1.0.4.tar.gz \
     && tar xzf aa.tar.gz \
-    && mv simplesamlphp-module-aa-1.0.3 aa \
+    && mv simplesamlphp-module-aa-1.0.4 aa \
     && curl -L -o hexaa.tar.gz https://github.com/NIIF/simplesamlphp-module-hexaa/archive/master.tar.gz \
     && tar xzf hexaa.tar.gz \
     && mv simplesamlphp-module-hexaa-master hexaa \
