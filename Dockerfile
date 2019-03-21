@@ -28,8 +28,15 @@ RUN cd /opt \
     && mv simplesamlphp-module-hexaa-master hexaa \
     && rm aa.tar.gz hexaa.tar.gz /opt/simplesamlphp.tar.gz
 
+
 COPY authsources.php /opt/simplesamlphp/config/
+RUN cd /opt/simplesamlphp \
+    && touch modules/aa/enable \
+    && cp modules/aa/config-templates/module_aa.php config/module_aa.php \
+    && chown -R www-data log
 
 COPY boot.sh /usr/local/bin/
+
+WORKDIR /opt/simplesamlphp
 
 CMD ["/usr/local/bin/boot.sh"]
