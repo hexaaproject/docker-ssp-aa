@@ -4,8 +4,6 @@ LABEL MAINTAINER Balázs SOLTÉSZ <solazs@sztaki.hu>
 # Install some dependencies
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-                       wget \
-                       unzip \
                        libicu-dev \
                        libmemcached-dev \
                        zlib1g-dev \
@@ -15,17 +13,17 @@ RUN apt-get update \
 
 # Download and extract simplesamlphp with aa and hexaa modules
 RUN cd /opt \
-    && curl -L -o simplesamlphp.tar.gz https://github.com/simplesamlphp/simplesamlphp/releases/download/v1.17.1/simplesamlphp-1.17.1.tar.gz \
+    && curl -L -o simplesamlphp.tar.gz https://github.com/simplesamlphp/simplesamlphp/releases/download/v1.17.2/simplesamlphp-1.17.2.tar.gz \
     && tar xzf simplesamlphp.tar.gz \
-    && mv simplesamlphp-1.17.1 simplesamlphp \
+    && mv simplesamlphp-* simplesamlphp \
     && ls -alF \
     && cd simplesamlphp/modules \
     && curl -L -o aa.tar.gz https://github.com/NIIF/simplesamlphp-module-aa/archive/master.tar.gz \
     && tar xzf aa.tar.gz \
-    && mv simplesamlphp-module-aa-master aa \
+    && mv simplesamlphp-module-aa-* aa \
     && curl -L -o hexaa.tar.gz https://github.com/NIIF/simplesamlphp-module-hexaa/archive/master.tar.gz \
     && tar xzf hexaa.tar.gz \
-    && mv simplesamlphp-module-hexaa-master hexaa \
+    && mv simplesamlphp-module-hexaa-* hexaa \
     && rm aa.tar.gz hexaa.tar.gz /opt/simplesamlphp.tar.gz
 
 
