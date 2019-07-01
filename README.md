@@ -4,6 +4,11 @@ Forked from [solazs/docker-ssp-aa-php-fpm](https://github.com/solazs/docker-ssp-
 
 Published image: [docker hub](https://hub.docker.com/r/hexaaproject/ssp-aa)
 
+## Building
+
+```
+docker build -t hexaaproject/ssp-aa:latest .
+```
 
 ## Usage
 
