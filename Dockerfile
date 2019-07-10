@@ -11,22 +11,22 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-ARG SIMPLESAMLPHP_VERSION=1.17.2
+ARG SIMPLESAMLPHP_VERSION=1.17.3
 
 # Download and extract simplesamlphp with aa and hexaa modules
+ADD https://github.com/simplesamlphp/simplesamlphp/releases/download/v$SIMPLESAMLPHP_VERSION/simplesamlphp-$SIMPLESAMLPHP_VERSION.tar.gz /opt/simplesamlphp.tar.gz
+ADD https://github.com/NIIF/simplesamlphp-module-aa/archive/master.tar.gz /opt/aa.tar.gz
+ADD https://github.com/NIIF/simplesamlphp-module-hexaa/archive/master.tar.gz /opt/hexaa.tar.gz
+
 RUN cd /opt \
-    && curl -L -o simplesamlphp.tar.gz https://github.com/simplesamlphp/simplesamlphp/releases/download/v$SIMPLESAMLPHP_VERSION/simplesamlphp-$SIMPLESAMLPHP_VERSION.tar.gz \
     && tar xzf simplesamlphp.tar.gz \
     && mv simplesamlphp-* simplesamlphp \
-    && ls -alF \
     && cd simplesamlphp/modules \
-    && curl -L -o aa.tar.gz https://github.com/NIIF/simplesamlphp-module-aa/archive/master.tar.gz \
-    && tar xzf aa.tar.gz \
+    && tar xzf /opt/aa.tar.gz \
     && mv simplesamlphp-module-aa-* aa \
-    && curl -L -o hexaa.tar.gz https://github.com/NIIF/simplesamlphp-module-hexaa/archive/master.tar.gz \
-    && tar xzf hexaa.tar.gz \
+    && tar xzf /opt/hexaa.tar.gz \
     && mv simplesamlphp-module-hexaa-* hexaa \
-    && rm aa.tar.gz hexaa.tar.gz /opt/simplesamlphp.tar.gz
+    && rm /opt/aa.tar.gz /opt/hexaa.tar.gz /opt/simplesamlphp.tar.gz
 
 
 COPY authsources.php /opt/simplesamlphp/config/
