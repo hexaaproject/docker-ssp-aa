@@ -16,3 +16,8 @@ docker build -t hexaaproject/ssp-aa:latest .
 2. Mount key and cert in `/opt/simplesamlphp/cert/`.
 3. Mount metadata in `/opt/simplesamlphp/metadata/`.
 4. Configure apache or nginx to serve this container.
+
+You can see an example in our
+[backend Ansible role](https://github.com/hexaaproject/ansible-role-hexaa-backend/blob/master/tasks/hexaa-backend.yml)
++
+[Ansible playbook](https://github.com/hexaaproject/ansible-hexaa)

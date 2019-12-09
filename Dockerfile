@@ -1,5 +1,5 @@
-FROM php:7.1.30-fpm-stretch
-LABEL MAINTAINER Balázs SOLTÉSZ <solazs@sztaki.hu>
+FROM php:7.3.12-fpm-buster
+LABEL MAINTAINER Péter TÓTH <tothp@sztaki.hu>
 
 # Install some dependencies
 RUN apt-get update \
@@ -11,7 +11,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-ARG SIMPLESAMLPHP_VERSION=1.17.3
+ARG SIMPLESAMLPHP_VERSION=1.18.2
 
 # Download and extract simplesamlphp with aa and hexaa modules
 ADD https://github.com/simplesamlphp/simplesamlphp/releases/download/v$SIMPLESAMLPHP_VERSION/simplesamlphp-$SIMPLESAMLPHP_VERSION.tar.gz /opt/simplesamlphp.tar.gz
